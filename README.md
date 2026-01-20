@@ -3,7 +3,7 @@ Este repositorio contiene mi **portafolio web personal**, donde presento mis hab
 El objetivo del portafolio es mostrar mi perfil profesional de forma clara, moderna y accesible.
 
 🔗 **Portafolio en línea:**  
-👉 https://TU-SITIO-NETLIFY.netlify.app
+👉 https://fauricioquirosportafolio.netlify.app/#
 
 ---
 
