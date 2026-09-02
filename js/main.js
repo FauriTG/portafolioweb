@@ -269,8 +269,8 @@ const I18N = {
     'I am <span class="about-highlight">Miguel Fauricio Quiros Salas</span>, a Computer Systems Engineering student at Universidad Latina de Costa Rica. I build software for real businesses: <span class="about-highlight">Autex Manager</span>, my main project, is a multi-business SaaS platform that adapts its workflow to auto repair shops, car washes and lube centers.',
   'En móvil trabajo con Flutter y con Android nativo en Kotlin y Jetpack Compose, aplicando arquitectura por capas, MVVM e inyección de dependencias. En el backend uso Firebase y Supabase: autenticación, base de datos, storage y funciones en la nube, con reglas de seguridad y control de acceso por roles.':
     'On mobile I work with <span class="about-highlight">Flutter</span> and native Android in <span class="about-highlight">Kotlin and Jetpack Compose</span>, applying layered architecture, MVVM and dependency injection. On the backend I use Firebase and Supabase: authentication, database, storage and cloud functions, with security rules and role-based access control.',
-  'En web voy desde el modelado de datos con SQL Server y Entity Framework hasta la interfaz en ASP.NET, HTML, CSS y JavaScript. Los sitios de César Brenes Car Service y Pillo Performance House ya están publicados y en uso.':
-    'On web I go from data modeling with SQL Server and Entity Framework to the interface in ASP.NET, HTML, CSS and JavaScript. The César Brenes Car Service and Pillo Performance House sites are live and in use.',
+  'En web voy desde el modelado de datos con SQL Server y Entity Framework hasta la interfaz en HTML, CSS y JavaScript. Los sitios de César Brenes Car Service y Pillo Performance House ya están publicados y en uso.':
+    'On web I go from data modeling with SQL Server and Entity Framework to the interface in HTML, CSS and JavaScript. The César Brenes Car Service and Pillo Performance House sites are live and in use.',
   'Ingeniería en Sistemas Computacionales': 'Computer Systems Engineering',
   'Inglés B2': 'English B2',
   'Nivel intermedio alto, técnico y conversacional': 'Upper-intermediate, technical and conversational',
