@@ -1,499 +1,407 @@
-// ==================== DATOS DE PROYECTOS ====================
-        const projectsData = {
-    1: {
-        icon: "Assets/ImagenSQL.jpg",
-        liveUrl: "#",
-
-        es: {
-            title: "Sistema de Inventario en SQL",
-            fullDescription: "Proyecto desarrollado para mejorar el control de inventario en una tienda. Incluyó el diseño del modelo entidad–relación, normalización de datos, creación de consultas SQL, generación de reportes y optimización básica.",
-            features: [
-                "Modelo ER normalizado (1FN–3FN)",
-                "Consultas avanzadas con JOIN, agregaciones y filtros",
-                "Índices para mejorar el rendimiento",
-                "Reportes para análisis de ventas",
-                "Tablas y procedimientos estructurados"
-            ],
-            tech: ["MySQL", "SQL Server", "Consultas Avanzadas", "Workbench"]
-        },
-
-        en: {
-            title: "SQL Inventory System",
-            fullDescription: "Project developed to improve inventory control for a retail store. Included ER modeling, normalization, SQL queries, reporting and basic performance optimization.",
-            features: [
-                "Normalized ER model (1NF–3NF)",
-                "Advanced queries with JOIN, aggregations and filters",
-                "Indexes for performance improvement",
-                "Sales analysis reports",
-                "Structured tables and procedures"
-            ],
-            tech: ["MySQL", "SQL Server", "Advanced Queries", "Workbench"]
-        }
-    },
-
-    2: {
-        icon: "Assets/QA AUTO.jpeg",
-        liveUrl: "#",
-
-        es: {
-            title: "Automatización con Selenium y JUnit",
-            fullDescription: "Automatización básica de pruebas funcionales para validar flujos importantes. Redujo tiempos de prueba manual y detectó errores antes de despliegues.",
-            features: [
-                "Automatización de flujos funcionales",
-                "Validaciones con JUnit",
-                "Reducción del 40% de tiempos de prueba",
-                "Ejecución repetible sin intervención humana",
-                "Scripts escalables y organizados"
-            ],
-            tech: ["Java", "Selenium WebDriver", "JUnit"]
-        },
-
-        en: {
-            title: "Automation with Selenium & JUnit",
-            fullDescription: "Basic automation of functional test flows, validating critical paths. Reduced manual testing time and detected issues before deployment.",
-            features: [
-                "Functional flow automation",
-                "JUnit validations",
-                "40% reduction in testing time",
-                "Repeatable execution without manual interaction",
-                "Organized and scalable scripts"
-            ],
-            tech: ["Java", "Selenium WebDriver", "JUnit"]
-        }
-    },
-
-    3: {
-    icon: "Assets/SCREENTIENDA.png",
-    liveUrl: "#",
-
-    es: {
-        title: "Página Web para Compras en Línea",
-        fullDescription:
-            "Proyecto enfocado en construir una interfaz clara, moderna y responsiva para un sitio de compras en línea. Incluye catálogo de productos, diseño adaptable para móviles, estilos personalizados en CSS y componentes básicos en JavaScript. Se encuentra en desarrollo con planes de integración a un backend.",
-        features: [
-            "Diseño completamente responsivo",
-            "Catálogo visual de productos",
-            "Interactividad con JavaScript",
-            "Componentes reutilizables",
-            "Preparado para conexión con base de datos"
-        ],
-        tech: ["HTML5", "CSS3", "JavaScript"]
-    },
-
-    en: {
-        title: "Online Shopping Website",
-        fullDescription:
-            "Project focused on building a clean, modern and responsive interface for an online shopping platform. Includes product catalog layouts, mobile-friendly design, custom CSS styling, and basic JavaScript components. Currently in development with future backend integration planned.",
-        features: [
-            "Fully responsive design",
-            "Visual product catalog",
-            "Interactivity using JavaScript",
-            "Reusable UI components",
-            "Ready for database integration"
-        ],
-        tech: ["HTML5", "CSS3", "JavaScript"]
-    }
-},
-
-
-    4: {
-    icon: "Assets/Fauricio QuirosLogo.png",
-    liveUrl: "#",
-
-    es: {
-        title: "Portafolio Web Personal",
-        fullDescription:
-            "Portafolio profesional desarrollado desde cero utilizando HTML, CSS y JavaScript. Incluye modo oscuro, animaciones con Canvas, diseño moderno optimizado para móviles y tarjetas con efecto 3D. Su objetivo es presentar mis habilidades, experiencia y proyectos de forma clara y atractiva.",
-        features: [
-            "Diseño moderno y responsivo",
-            "Modo claro / oscuro",
-            "Animaciones con Canvas API",
-            "Tarjetas con efecto 3D",
-            "Optimizado para dispositivos móviles"
-        ],
-        tech: ["HTML5", "CSS3", "JavaScript", "Canvas API"]
-    },
-
-    en: {
-        title: "Personal Web Portfolio",
-        fullDescription:
-            "Professional portfolio built from scratch using HTML, CSS and JavaScript. Includes dark/light mode, Canvas animations, modern mobile-optimized layout, and 3D card effects. Designed to clearly showcase my skills, experience, and development projects.",
-        features: [
-            "Modern and responsive design",
-            "Light / dark mode",
-            "Canvas API animations",
-            "3D card effects",
-            "Optimized for mobile devices"
-        ],
-        tech: ["HTML5", "CSS3", "JavaScript", "Canvas API"]
-    }
-},
-
-};
-
-
-        // ==================== PARTICLES ANIMATION ====================
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
-                this.color = Math.random() > 0.5 ? '#00d9ff' : '#a855f7';
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    this.x -= dx / 20;
-                    this.y -= dy / 20;
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const particleCount = window.innerWidth < 768 ? 50 : 100;
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function connectParticles() {
-            for (let a = 0; a < particles.length; a++) {
-                for (let b = a + 1; b < particles.length; b++) {
-                    const dx = particles[a].x - particles[b].x;
-                    const dy = particles[a].y - particles[b].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.strokeStyle = `rgba(0, 217, 255, ${1 - distance / 150})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(particles[b].x, particles[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        // ==================== INTERSECTION OBSERVER (FADE-IN SECTIONS) ====================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            if (!section.classList.contains('hero')) {
-                observer.observe(section);
-            }
-        });
-
-        // ==================== THEME TOGGLE ====================
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-
-        const savedTheme = JSON.parse(localStorage.getItem('theme')) || 'dark';
-        html.setAttribute('data-theme', savedTheme);
-        themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
-            localStorage.setItem('theme', JSON.stringify(newTheme));
-        });
-
-        // ==================== SMOOTH SCROLL ====================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // ==================== MODAL SYSTEM ====================
-        const modal = document.getElementById('project-modal');
-        const modalBody = document.getElementById('modal-body');
-        const modalClose = document.getElementById('modal-close');
-
-       function openModal(projectId) {
-    const project = projectsData[projectId][currentLang];
-
-            
-            modalBody.innerHTML = `
-    <div class="modal-image">
-        <img src="${projectsData[projectId].icon}" style="width: 100%; border-radius: 10px;">
-    </div>
-
-    <h2>${project.title}</h2>
-    <p class="modal-description">${project.fullDescription}</p>
-
-    <div class="modal-features">
-        <h3>${currentLang === "es" ? "Características principales:" : "Main Features:"}</h3>
-        <ul>
-            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-        </ul>
-    </div>
-
-    <div class="tech-tags">
-        ${project.tech.map(tech => `<span class='tech-tag'>${tech}</span>`).join('')}
-    </div>
-
-    <a href="#" onclick="showLiveUnavailable()" class="modal-link">
-        ${currentLang === "es" ? "Ver proyecto en vivo →" : "View live project →"}
-    </a>
-`;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Event listeners para tarjetas de proyecto
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const projectId = card.getAttribute('data-project');
-                openModal(projectId);
-            });
-        });
-
-        // Cerrar modal
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Cerrar modal con ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-
-        // ==================== FORM VALIDATION (REMOVED - Using FormSubmit native validation) ====================
-        // El formulario ahora usa FormSubmit y validación HTML5 nativa
-
-        // ==================== 3D CARD EFFECT ====================
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projectCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // ==================== PERFORMANCE: DEFER HEAVY OPERATIONS ====================
-        // Reducir partículas en dispositivos de bajo rendimiento
-        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-            particles = particles.slice(0, 30);
-        }
-
-        // Pausar animaciones cuando la pestaña no está visible
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                // Pausar animaciones pesadas si es necesario
-            }
-        });
-    
-function showLiveMessage() {
-    const message = document.createElement("div");
-    message.className = "live-message";
-    message.innerText = "Todavía no está disponible para ver en vivo.";
-
-    document.body.appendChild(message);
-
-    setTimeout(() => {
-        message.classList.add("show");
-    }, 10);
-
-    setTimeout(() => {
-        message.classList.remove("show");
-        setTimeout(() => message.remove(), 400);
-    }, 2500);
-
-    
-}
-const translations = {
-    es: {
-        home: "Inicio",
-        projects: "Proyectos",
-        contact: "Contacto",
-        tagline: "INGENIERO EN SISTEMAS",
-        connect: "Conectemos",
-        featuredProjects: "Proyectos Destacados",
-        contactTitle: "Contacto",
-        sendMessage: "Enviar Mensaje",
-        liveUnavailable: "Aún no se puede ver este proyecto en vivo",
-
-        // 🔵 PROYECTOS (ES)
-        p1_title: "Sistema de Inventario en SQL",
-        p1_desc: "Diseño completo del sistema desde el modelo entidad–relación, normalización, consultas avanzadas y optimización.",
-
-        p2_title: "Automatización con Selenium y JUnit",
-        p2_desc: "Scripts que redujeron los tiempos de prueba en más de un 40%.",
-
-        p3_title: "Página Web para Compras en Línea",
-        p3_desc: "Proyecto en desarrollo usando HTML, CSS y JavaScript.",
-
-        p4_title: "Portafolio Web Personal",
-        p4_desc: "Diseño y construcción de mi portafolio profesional.",
-    },
-
-    en: {
-        home: "Home",
-        projects: "Projects",
-        contact: "Contact",
-        tagline: "SYSTEMS ENGINEER",
-        connect: "Let's Connect",
-        featuredProjects: "Featured Projects",
-        contactTitle: "Contact",
-        sendMessage: "Send Message",
-        liveUnavailable: "This project is not available to view live yet",
-
-        // 🔵 PROJECTS (EN)
-        p1_title: "SQL Inventory System",
-        p1_desc: "Complete system design including ER modeling, normalization, advanced queries and optimization.",
-
-        p2_title: "Automation with Selenium & JUnit",
-        p2_desc: "Automated scripts that reduced testing times by more than 40%.",
-
-        p3_title: "Online Shopping Website",
-        p3_desc: "Project in development using HTML, CSS and JavaScript.",
-
-        p4_title: "Professional Web Portfolio",
-        p4_desc: "Design and development of my professional portfolio.",
-    }
-};
-
-let currentLang = "es";
-
-// Función para cambiar el idioma
-function updateLanguage(lang) {
-    document.querySelector('a[href="#home"]').textContent = translations[lang].home;
-    document.querySelector('a[href="#projects"]').textContent = translations[lang].projects;
-    document.querySelector('a[href="#contact"]').textContent = translations[lang].contact;
-    document.querySelector(".tagline").textContent = translations[lang].tagline;
-    document.querySelector(".cta-button").textContent = translations[lang].connect;
-    document.querySelector("#projects h2").textContent = translations[lang].featuredProjects;
-    document.querySelector("#contact h2").textContent = translations[lang].contactTitle;
-    document.querySelector(".submit-btn").textContent = translations[lang].sendMessage;
-    document.getElementById("p1-title").textContent = translations[lang].p1_title;
-document.getElementById("p1-desc").textContent = translations[lang].p1_desc;
-document.getElementById("p2-title").textContent = translations[lang].p2_title;
-document.getElementById("p2-desc").textContent = translations[lang].p2_desc;
-document.getElementById("p3-title").textContent = translations[lang].p3_title;
-document.getElementById("p3-desc").textContent = translations[lang].p3_desc;
-document.getElementById("p4-title").textContent = translations[lang].p4_title;
-document.getElementById("p4-desc").textContent = translations[lang].p4_desc;
-
-}
-
-document.getElementById("lang-toggle").addEventListener("click", () => {
-    currentLang = currentLang === "es" ? "en" : "es";
-    updateLanguage(currentLang);
-    document.getElementById("lang-toggle").textContent = currentLang === "es" ? "EN" : "ES";
+/* ================================================================
+   PORTAFOLIO — Miguel Fauricio Quiros Salas
+   main.js  |  Vanilla JavaScript ES6 (sin frameworks)
+   ================================================================ */
+
+
+/* ── TEMA CLARO / OSCURO ─────────────────────────────────────────── */
+(function initTheme() {
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const html   = document.documentElement;
+
+  const SUN_ICON  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="5"/>
+    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+  </svg>`;
+  const MOON_ICON = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>`;
+
+  // Preferencia guardada; si no hay, la del sistema
+  const stored = (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
+  let theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  html.setAttribute('data-theme', theme);
+  if (toggle) toggle.innerHTML = theme === 'dark' ? SUN_ICON : MOON_ICON;
+
+  if (!toggle) return;
+
+  toggle.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch { /* modo privado */ }
+    toggle.innerHTML = theme === 'dark' ? SUN_ICON : MOON_ICON;
+    toggle.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'
+    );
+  });
+})();
+
+
+/* ── MENÚ MÓVIL ──────────────────────────────────────────────────── */
+(function initMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const menu      = document.getElementById('mobile-menu');
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Cerrar al hacer clic en un enlace
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+
+/* ── BORDE DEL NAV AL HACER SCROLL ──────────────────────────────── */
+(function initNavScroll() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = scrollY > 20
+      ? 'var(--color-border)'
+      : 'var(--color-divider)';
+  }, { passive: true });
+})();
+
+
+/* ── LUCIDE ICONS ────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 });
 
-// Inicializar idioma
-updateLanguage(currentLang);
 
-function showLiveUnavailable() {
-    const alertBox = document.getElementById("live-alert");
-    const alertText = document.getElementById("live-alert-text");
+/* ── SALUDO DINÁMICO SEGÚN HORA ─────────────────────────────────── */
+/* Se repinta en cada cambio de idioma: el traductor restaura el <span>
+   vacío, así que este módulo es el dueño de su contenido. */
+(function initDynamicGreeting() {
+  const GREETINGS = {
+    es: ['Buenos días.', 'Buenas tardes.', 'Buenas noches.'],
+    en: ['Good morning.', 'Good afternoon.', 'Good evening.'],
+  };
 
-    // idioma dinámico
-    alertText.textContent = translations[currentLang].liveUnavailable;
+  function render() {
+    const el = document.getElementById('dynamic-greeting');
+    if (!el) return;
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'es';
+    const hour = new Date().getHours();
+    const i = hour >= 6 && hour < 12 ? 0 : hour >= 12 && hour < 19 ? 1 : 2;
+    el.textContent = GREETINGS[lang][i];
+  }
 
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("show");
+  document.addEventListener('DOMContentLoaded', render);
+  document.addEventListener('langchange', render);
+})();
 
-    setTimeout(() => {
-        alertBox.classList.remove("show");
-        alertBox.classList.add("hidden");
-    }, 2500);
-}
+
+/* ── VISOR DE IMÁGENES CON ZOOM ──────────────────────────────────── */
+(function initLightbox() {
+  const box = document.getElementById('lightbox');
+  const triggers = document.querySelectorAll('.zoomable[data-full]');
+  if (!box || !triggers.length) return;
+
+  const stage   = box.querySelector('[data-lb="stage"]');
+  const img     = box.querySelector('[data-lb="img"]');
+  const caption = box.querySelector('#lightbox-caption');
+  const level   = box.querySelector('[data-lb="level"]');
+  const btnIn   = box.querySelector('[data-lb="in"]');
+  const btnOut  = box.querySelector('[data-lb="out"]');
+
+  const MIN = 1, MAX = 6;
+  let scale = 1, tx = 0, ty = 0;
+  let lastFocus = null;
+
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+  function render() {
+    img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    level.textContent = Math.round(scale * 100) + '%';
+    stage.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+    btnIn.disabled  = scale >= MAX;
+    btnOut.disabled = scale <= MIN;
+  }
+
+  // Al alejar hasta 1x la imagen vuelve a quedar centrada
+  function setScale(next, originX, originY) {
+    next = clamp(next, MIN, MAX);
+    if (next === scale) return;
+    const r = stage.getBoundingClientRect();
+    const cx = (originX ?? r.left + r.width / 2) - r.left - r.width / 2;
+    const cy = (originY ?? r.top + r.height / 2) - r.top - r.height / 2;
+    const k = next / scale;
+    tx = cx - (cx - tx) * k;
+    ty = cy - (cy - ty) * k;
+    scale = next;
+    if (scale === MIN) { tx = 0; ty = 0; }
+    render();
+  }
+
+  function open(trigger) {
+    lastFocus = trigger;
+    img.src = trigger.dataset.full;
+    img.alt = trigger.querySelector('img')?.alt || '';
+    caption.textContent = trigger.dataset.caption || '';
+    scale = 1; tx = 0; ty = 0;
+    render();
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    box.querySelector('[data-lb="close"]').focus();
+    document.addEventListener('keydown', onKey);
+  }
+
+  function close() {
+    box.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    img.removeAttribute('src');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key === '+' || e.key === '=') { setScale(scale * 1.4); return; }
+    if (e.key === '-') { setScale(scale / 1.4); return; }
+    // Mantiene el foco dentro del visor mientras está abierto
+    if (e.key === 'Tab') {
+      const f = [...box.querySelectorAll('button')].filter(b => !b.disabled);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
+  triggers.forEach(t => t.addEventListener('click', () => open(t)));
+
+  box.addEventListener('click', e => {
+    const action = e.target.closest('[data-lb]')?.dataset.lb;
+    if (action === 'close') { close(); return; }
+    if (action === 'in')    { setScale(scale * 1.5); return; }
+    if (action === 'out')   { setScale(scale / 1.5); return; }
+    // Clic fuera de la imagen cierra
+    if (e.target === stage || e.target === box) close();
+  });
+
+  stage.addEventListener('dblclick', e => setScale(scale > 1 ? MIN : 2.5, e.clientX, e.clientY));
+
+  stage.addEventListener('wheel', e => {
+    e.preventDefault();
+    setScale(scale * (e.deltaY < 0 ? 1.15 : 1 / 1.15), e.clientX, e.clientY);
+  }, { passive: false });
+
+  /* Arrastre y pellizco con punteros: sirve igual para ratón y táctil */
+  const pointers = new Map();
+  let start = null, pinchStart = null;
+
+  stage.addEventListener('pointerdown', e => {
+    if (e.target.closest('.lightbox-btn')) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 1) {
+      start = { x: e.clientX - tx, y: e.clientY - ty };
+      if (scale > 1) stage.classList.add('is-panning');
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchStart = { dist: Math.hypot(a.x - b.x, a.y - b.y), scale };
+      start = null;
+    }
+    try { stage.setPointerCapture(e.pointerId); } catch { /* puntero ya liberado */ }
+  });
+
+  stage.addEventListener('pointermove', e => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    if (pointers.size === 2 && pinchStart) {
+      const [a, b] = [...pointers.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      setScale(pinchStart.scale * (dist / pinchStart.dist), (a.x + b.x) / 2, (a.y + b.y) / 2);
+    } else if (start && scale > 1) {
+      tx = e.clientX - start.x;
+      ty = e.clientY - start.y;
+      render();
+    }
+  });
+
+  function endPointer(e) {
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinchStart = null;
+    if (pointers.size === 0) { start = null; stage.classList.remove('is-panning'); }
+  }
+  stage.addEventListener('pointerup', endPointer);
+  stage.addEventListener('pointercancel', endPointer);
+})();
+
+
+/* ── TRADUCCIÓN ES / EN ──────────────────────────────────────────────
+   El español vive en el HTML; aquí solo está su equivalente en inglés,
+   indexado por el propio texto en español (sin claves intermedias).
+   ------------------------------------------------------------------ */
+const I18N = {
+  /* Navegación */
+  'Sobre mí': 'About',
+  'Proyectos': 'Projects',
+  'Experiencia': 'Experience',
+  'Contacto': 'Contact',
+
+  /* Hero */
+  'Disponible para trabajar': 'Available for work',
+  'Desarrollador Móvil y Full-Stack Estudiante de Ingeniería':
+    'Mobile &amp; Full-Stack Developer<br>Engineering Student',
+  'Construyo aplicaciones móviles y web para negocios reales. Flutter y Android nativo, con backend en Firebase y Supabase.':
+    'I build mobile and web applications for real businesses. Flutter and native Android, with Firebase and Supabase on the backend.',
+  'Ver proyectos': 'View projects',
+  'Contactarme': 'Get in touch',
+  'Años estudiando': 'Years studying',
+  'Inglés': 'English',
+
+  /* Sobre mí */
+  'Buenos días.': 'Good morning.',
+  'Buenas tardes.': 'Good afternoon.',
+  'Buenas noches.': 'Good evening.',
+  'Soy Miguel Fauricio Quiros Salas, estudiante de Ingeniería en Sistemas Computacionales en la Universidad Latina de Costa Rica. Construyo software para negocios reales: Autex Manager, mi proyecto principal, es una plataforma SaaS multi-negocio que adapta su flujo de trabajo a talleres, autolavados y lubricentros.':
+    'I am <span class="about-highlight">Miguel Fauricio Quiros Salas</span>, a Computer Systems Engineering student at Universidad Latina de Costa Rica. I build software for real businesses: <span class="about-highlight">Autex Manager</span>, my main project, is a multi-business SaaS platform that adapts its workflow to auto repair shops, car washes and lube centers.',
+  'En móvil trabajo con Flutter y con Android nativo en Kotlin y Jetpack Compose, aplicando arquitectura por capas, MVVM e inyección de dependencias. En el backend uso Firebase y Supabase: autenticación, base de datos, storage y funciones en la nube, con reglas de seguridad y control de acceso por roles.':
+    'On mobile I work with <span class="about-highlight">Flutter</span> and native Android in <span class="about-highlight">Kotlin and Jetpack Compose</span>, applying layered architecture, MVVM and dependency injection. On the backend I use Firebase and Supabase: authentication, database, storage and cloud functions, with security rules and role-based access control.',
+  'En web voy desde el modelado de datos con SQL Server y Entity Framework hasta la interfaz en ASP.NET, HTML, CSS y JavaScript. Los sitios de César Brenes Car Service y Pillo Performance House ya están publicados y en uso.':
+    'On web I go from data modeling with SQL Server and Entity Framework to the interface in ASP.NET, HTML, CSS and JavaScript. The César Brenes Car Service and Pillo Performance House sites are live and in use.',
+  'Ingeniería en Sistemas Computacionales': 'Computer Systems Engineering',
+  'Inglés B2': 'English B2',
+  'Nivel intermedio alto, técnico y conversacional': 'Upper-intermediate, technical and conversational',
+  'Stack principal': 'Core stack',
+  'Disponibilidad': 'Availability',
+  'Inmediata — en busca de empleo, proyectos freelance y colaboraciones':
+    'Immediate — open to employment, freelance work and collaborations',
+
+  /* Skills */
+  'Tecnologías': 'Technologies',
+  'Mis herramientas de trabajo.': 'The tools I work with.',
+  'Desde backend con C# hasta aplicaciones móviles con Flutter, trabajo con el stack completo de desarrollo.':
+    'From C# on the backend to mobile apps in Flutter, I work across the full development stack.',
+  'Backend Web': 'Web Backend',
+  'Móvil': 'Mobile',
+  'Bases de Datos': 'Databases',
+  'Herramientas & DevOps': 'Tools &amp; DevOps',
+  'Redes & Infraestructura': 'Networks &amp; Infrastructure',
+  'Migraciones EF': 'EF Migrations',
+  'Diseño relacional': 'Relational design',
+
+  /* Proyectos */
+  'Lo que he construido.': 'What I have built.',
+  'Proyectos realizados por mi. Cada uno resuelve un problema concreto.':
+    'Projects I built myself. Each one solves a concrete problem.',
+  'App Móvil — SaaS Multi-Negocio': 'Mobile App — Multi-Business SaaS',
+  'Landing Page — Negocio Real': 'Landing Page — Real Business',
+  'E-commerce — En desarrollo': 'E-commerce — In development',
+  'Sitio Web — Negocio Real': 'Website — Real Business',
+  'App Android — Proyecto Universitario': 'Android App — University Project',
+  'Plataforma SaaS multi-negocio para la gestión integral de talleres automotrices, autolavados, lubricentros y talleres de motos. Con una sola base de código, el dashboard y el flujo de trabajo se adaptan automáticamente al tipo de negocio, ofreciendo a cada rubro una experiencia optimizada sin sacrificar una identidad visual consistente. Incluye órdenes de servicio, clientes y vehículos, inventario, facturación, reportes y gestión de equipo, con control de acceso por roles y multi-tenant sobre Firebase.':
+    'Multi-business SaaS platform for the end-to-end management of auto repair shops, car washes, lube centers and motorcycle shops. From a single codebase, the dashboard and workflow adapt automatically to the type of business, giving each one an optimized experience without sacrificing a consistent visual identity. It covers service orders, customers and vehicles, inventory, invoicing, reports and team management, with role-based access control and multi-tenancy on Firebase.',
+  'Landing page profesional para negocio de taller mecánico. Diseño moderno, responsivo y optimizado para conversión. Incluye información de servicios, contacto y ubicación del negocio.':
+    'Professional landing page for an auto repair business. Modern, responsive design optimized for conversion. Includes services, contact details and the shop location.',
+  'Página web para compras en línea con interfaz clara, moderna y responsiva. Incluye catálogo de productos, diseño adaptable para móviles, estilos personalizados y componentes interactivos. Preparado para integración con backend.':
+    'Online shopping site with a clear, modern and responsive interface. Includes a product catalog, mobile-friendly layout, custom styling and interactive components. Ready for backend integration.',
+  'Sitio web para un negocio de motocicletas especializado en tuning, performance y personalización. Identidad visual oscura construida alrededor de la marca, con secciones de servicios, marcas, galería y reels, y llamado directo a agendar cita.':
+    'Website for a motorcycle business specialized in tuning, performance and customization. Dark visual identity built around the brand, with sections for services, brands, gallery and reels, and a direct call to book an appointment.',
+  'App Android nativa para reportar y encontrar mascotas perdidas en Costa Rica. Conecta a quien perdió a su mascota con quien la vio en la calle mediante reportes georreferenciados sobre mapa, un motor de coincidencias entre casos perdidos y encontrados, y chat directo entre usuarios. Reemplaza los grupos de Facebook dispersos por un solo lugar donde actuar rápido.':
+    'Native Android app to report and find lost pets in Costa Rica. It connects whoever lost a pet with whoever spotted it on the street through geolocated map reports, a matching engine between lost and found cases, and direct chat between users. It replaces scattered Facebook groups with a single place to act fast.',
+  'Tablero Kanban de órdenes': 'Kanban board of service orders',
+  'Creación de orden de servicio': 'Creating a service order',
+  'Repuestos, fotos y costeo': 'Parts, photos and cost breakdown',
+  'RBAC multi-tenant': 'Multi-tenant RBAC',
+  'Catálogo': 'Catalog',
+
+  /* Experiencia */
+  'Trayectoria': 'Background',
+  'Educación & experiencia.': 'Education &amp; experience.',
+  'Formación técnica en ingeniería, aplicada en proyectos reales.':
+    'Engineering education, applied to real projects.',
+  '2023 — Presente': '2023 — Present',
+  'Formación en desarrollo web, bases de datos, redes y programación orientada a objetos. Proyectos prácticos con ASP.NET, Entity Framework, Flutter y Firebase.':
+    'Training in web development, databases, networking and object-oriented programming. Hands-on projects with ASP.NET, Entity Framework, Flutter and Firebase.',
+
+  /* Contacto y pie */
+  'Trabajemos juntos.': 'Let us work together.',
+  'Estoy en busca de empleo, con disponibilidad inmediata. También tomo proyectos freelance y colaboraciones. Si tienes algo en mente, escríbeme.':
+    'I am looking for a job and available immediately. I also take on freelance projects and collaborations. If you have something in mind, drop me a line.',
+  'Enviar un correo': 'Send an email',
+  'Teléfono': 'Phone',
+
+  /* Visor de imágenes */
+  'Haz clic para ver en grande': 'Click to view larger',
+  'Rueda del ratón o pellizca para hacer zoom · arrastra para mover · doble clic para alternar · Esc para salir':
+    'Scroll or pinch to zoom · drag to pan · double-click to toggle · Esc to exit',
+  'Dashboard principal de Autex Manager en el taller': 'Autex Manager main dashboard in the workshop',
+  'Landing page de César Brenes Car Service': 'César Brenes Car Service landing page',
+  'Tienda en línea La Nueva Avenida': 'La Nueva Avenida online store',
+  'Sitio web de Pillo Performance House': 'Pillo Performance House website',
+  'PetFinder CR — pantalla principal': 'PetFinder CR — home screen',
+};
+
+(function initLanguage() {
+  const btn = document.querySelector('[data-lang-toggle]');
+  if (!btn) return;
+
+  /* Elementos cuyo texto se traduce. Lo que no esté en I18N queda igual:
+     nombres de tecnologías, de proyectos y datos de contacto. */
+  const SELECTORS = [
+    '.nav-links a', '.mobile-menu a', '.nav-cta', '.hero-badge', '.hero-title',
+    '.hero-desc', '.btn', '.hero-stat-label', '.section-label', '.section-title',
+    '.section-subtitle', '.about-text p', '.about-info-title', '.about-info-val',
+    '.skill-card-title', '.skill-tag', '.project-type', '.project-desc',
+    '.project-gallery > li > span', '.project-tag', '.timeline-period',
+    '.timeline-role', '.timeline-detail', '.contact-cta-title',
+    '.contact-cta-subtitle', '.contact-link-label', '.footer-links a',
+    '.lightbox-help', '.zoom-hint',
+  ].join(',');
+
+  /* Clave de búsqueda: el <br> no aporta espacio en textContent, así que se
+     convierte antes; el elemento temporal decodifica entidades como &amp;. */
+  const scratch = document.createElement('div');
+  const norm = el => {
+    scratch.innerHTML = el.innerHTML.replace(/<br\s*\/?>/gi, ' ');
+    return scratch.textContent.replace(/\s+/g, ' ').trim();
+  };
+  const nodes = [...document.querySelectorAll(SELECTORS)]
+    .filter(el => !el.querySelector('#dynamic-greeting'));
+  const original = new Map();
+  nodes.forEach(n => original.set(n, n.innerHTML));
+
+  // Las leyendas del visor viven en un atributo, no en el texto
+  const captioned = [...document.querySelectorAll('[data-caption]')];
+  captioned.forEach(n => { n.dataset.captionEs = n.dataset.caption; });
+
+  function apply(lang) {
+    const en = lang === 'en';
+    nodes.forEach(n => {
+      if (!en) { n.innerHTML = original.get(n); return; }
+      const t = I18N[norm(n)];
+      if (t) n.innerHTML = t;
+    });
+    captioned.forEach(n => {
+      const es = n.dataset.captionEs;
+      n.dataset.caption = en ? (I18N[es] || es) : es;
+    });
+    document.documentElement.lang = lang;
+    document.title = en ? 'Fauricio Quiros — Developer' : 'Fauricio Quiros — Desarrollador';
+    btn.textContent = en ? 'ES' : 'EN';
+    btn.setAttribute('aria-label', en ? 'Cambiar a español' : 'Switch to English');
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
+  }
+
+  let lang = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();
+  if (!lang) lang = (navigator.language || '').startsWith('es') ? 'es' : 'en';
+  apply(lang);
+
+  btn.addEventListener('click', () => {
+    lang = lang === 'en' ? 'es' : 'en';
+    try { localStorage.setItem('lang', lang); } catch { /* modo privado */ }
+    apply(lang);
+  });
+})();

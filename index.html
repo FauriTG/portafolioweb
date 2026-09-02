@@ -1,139 +1,920 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauricio Quirós | Systems Engineer</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Miguel Fauricio Quiros Salas — Desarrollador móvil y full-stack. Flutter, Kotlin, Firebase y Supabase. Inglés B2. Estudiante de Ingeniería en Sistemas Computacionales.">
+  <meta property="og:title"       content="Fauricio Quiros — Desarrollador Móvil y Full-Stack">
+  <meta property="og:description" content="Portafolio de Miguel Fauricio Quiros Salas. Desarrollador móvil y full-stack.">
+  <title>Fauricio Quiros — Desarrollador</title>
 
+  <!-- Fuentes: Fontshare CDN -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+  <!-- Íconos: Lucide (cargados después del DOM) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <!-- Tema aplicado antes de pintar, para evitar el parpadeo al cargar -->
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <!-- Estilos -->
+<link rel="stylesheet" href="css/style.css">
+
+  <!-- Funcionalidad: main.js -->
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- Canvas para partículas -->
-    <canvas id="particles-canvas"></canvas>
 
-   <nav>
-    <div class="container">
-        <div class="logo">FQ</div>
-        <ul>
-            <li><a href="#home" id="nav-home">Inicio</a></li>
-            <li><a href="#projects" id="nav-projects">Proyectos</a></li>
-            <li><a href="#contact" id="nav-contact">Contacto</a></li>
-        </ul>
+  <!-- ── SKIP LINK (accesibilidad) ── -->
+  <a class="sr-only" href="#main">Ir al contenido principal</a>
 
-        <!-- Botones a la derecha -->
-        <div class="nav-buttons">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">🌙</button>
-            <button id="lang-toggle" class="lang-toggle">EN</button>
+
+  <!-- ══════════════════════════════════════════════
+       NAVEGACIÓN
+  ══════════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+
+    <!-- Logo -->
+    <a href="#inicio" class="nav-logo" aria-label="Inicio">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-label="Logo FQ" role="img">
+        <rect width="34" height="34" rx="9" fill="var(--color-primary)"/>
+        <text x="5" y="24" font-family="'Cabinet Grotesk', sans-serif" font-weight="800" font-size="16" fill="white" letter-spacing="-0.5">FQ</text>
+      </svg>
+      <span class="nav-logo-text">Fauricio Quiros</span>
+    </a>
+
+    <!-- Links (desktop) -->
+    <ul class="nav-links" role="list">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#tecnologias">Skills</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+    </ul>
+
+    <!-- Controles derecha -->
+    <div class="nav-right">
+      <button class="theme-toggle lang-toggle" data-lang-toggle aria-label="Switch to English">EN</button>
+      <button class="theme-toggle" data-theme-toggle aria-label="Cambiar a modo claro">
+        <!-- Ícono inyectado por main.js -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menú móvil desplegable -->
+  <div class="mobile-menu" id="mobile-menu" role="menu">
+    <a href="#sobre-mi"    role="menuitem">Sobre mí</a>
+    <a href="#tecnologias" role="menuitem">Skills</a>
+    <a href="#proyectos"   role="menuitem">Proyectos</a>
+    <a href="#experiencia" role="menuitem">Experiencia</a>
+    <a href="#contacto"    role="menuitem">Contacto</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ══════════════════════════════════════════════ -->
+  <main id="main">
+
+
+    <!-- ── HERO ──────────────────────────────────── -->
+    <section id="inicio" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid-lines"></div>
+
+      <div class="container hero-content">
+        <div class="hero-layout">
+        <div class="hero-main">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Disponible para trabajar
         </div>
-    </div>
-</nav>
 
-    <div class="social-float">
+        <h1 class="hero-name">
+          Miguel<br>
+          <span class="hero-name-accent">Fauricio</span><br>
+          Quiros.
+        </h1>
 
-    <div class="social-item">
-        <a href="https://www.linkedin.com/in/fauricio-quiros-3278b22b7/"
-           target="_blank" class="social-btn linkedin">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-        </a>
-        <span class="social-text">LinkedIn</span>
-    </div>
+        <p class="hero-title">Desarrollador Móvil y Full-Stack<br>Estudiante de Ingeniería</p>
 
-    <div class="social-item">
-        <a href="https://wa.me/50685270973"
-           target="_blank" class="social-btn whatsapp">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        </a>
-        <span class="social-text">WhatsApp</span>
-    </div>
+        <p class="hero-desc">
+          Construyo aplicaciones móviles y web para negocios reales.
+          Flutter y Android nativo, con backend en Firebase y Supabase.
+        </p>
 
-</div>
-
-    <!-- Hero Section -->
-    <section class="hero visible" id="home">
-        <div class="hero-content">
-            <h1>Fauricio Quirós</h1>
-            <p class="tagline">SYSTEMS ENGINEER</p>
-            <a href="#contact" class="cta-button">Conectemos</a>
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+            Ver proyectos
+          </a>
+          <a href="#contacto" class="btn btn-ghost">Contactarme</a>
         </div>
+        </div>
+
+        <div class="hero-portrait">
+          <img src="Assets/foto-personal.jpeg"
+               alt="Retrato de Miguel Fauricio Quiros Salas"
+               width="800" height="800" fetchpriority="high">
+        </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="fade-in">
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">Proyectos</div>
+          </div>
+          <div class="fade-in">
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Años estudiando</div>
+          </div>
+          <div class="fade-in">
+            <div class="hero-stat-num">B2</div>
+            <div class="hero-stat-label">Inglés</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2>Proyectos Destacados</h2>
-            <div class="projects-grid">
+    <div class="divider"></div>
 
-    <div class="project-card" data-project="1">
-        <h3 id="p1-title">Sistema de Inventario en SQL</h3>
-        <p id="p1-desc">Diseño completo del sistema desde el modelo entidad–relación, normalización, consultas avanzadas y optimización.</p>
-    </div>
 
-    <div class="project-card" data-project="2">
-        <h3 id="p2-title">Automatización con Selenium y JUnit</h3>
-        <p id="p2-desc">Scripts que redujeron los tiempos de prueba en más de un 40%.</p>
-    </div>
+    <!-- ── SOBRE MÍ ───────────────────────────────── -->
+    <section id="sobre-mi">
+      <div class="container">
+        <div class="about-grid">
 
-    <div class="project-card" data-project="3">
-        <h3 id="p3-title">Página Web para Compras en Línea</h3>
-        <p id="p3-desc">Proyecto en desarrollo usando HTML, CSS y JavaScript.</p>
-    </div>
+          <!-- Texto -->
+          <div class="about-text fade-in">
+            <span class="section-label">Sobre mí</span>
+            <h2 class="section-title"><span id="dynamic-greeting"></span></h2>
+            <p>
+              Soy <span class="about-highlight">Miguel Fauricio Quiros Salas</span>, estudiante de
+              Ingeniería en Sistemas Computacionales en la Universidad Latina de Costa Rica.
+              Construyo software para negocios reales: <span class="about-highlight">Autex Manager</span>,
+              mi proyecto principal, es una plataforma SaaS multi-negocio que adapta su flujo
+              de trabajo a talleres, autolavados y lubricentros.
+            </p>
+            <p>
+              En móvil trabajo con <span class="about-highlight">Flutter</span> y con Android nativo
+              en <span class="about-highlight">Kotlin y Jetpack Compose</span>, aplicando arquitectura
+              por capas, MVVM e inyección de dependencias. En el backend uso Firebase y Supabase:
+              autenticación, base de datos, storage y funciones en la nube, con reglas de seguridad
+              y control de acceso por roles.
+            </p>
+            <p>
+              En web voy desde el modelado de datos con SQL Server y Entity Framework hasta la
+              interfaz en ASP.NET, HTML, CSS y JavaScript. Los sitios de César Brenes Car Service
+              y Pillo Performance House ya están publicados y en uso.
+            </p>
+          </div>
 
-    <div class="project-card" data-project="4">
-        <h3 id="p4-title">Portafolio Web Personal</h3>
-        <p id="p4-desc">Diseño y construcción de mi portafolio profesional.</p>
-    </div>
-</div>
+          <!-- Tarjetas de info -->
+          <div class="about-info-grid fade-in">
+
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-info-title">Universidad Latina de Costa Rica</div>
+                <div class="about-info-val">Ingeniería en Sistemas Computacionales</div>
+              </div>
             </div>
+
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-info-title">Inglés B2</div>
+                <div class="about-info-val">Nivel intermedio alto, técnico y conversacional</div>
+              </div>
+            </div>
+
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-info-title">Stack principal</div>
+                <div class="about-info-val">Flutter · Kotlin · Firebase · Supabase · C# · SQL Server</div>
+              </div>
+            </div>
+
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8v4l3 3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-info-title">Disponibilidad</div>
+                <div class="about-info-val">Inmediata — en busca de empleo, proyectos freelance y colaboraciones</div>
+              </div>
+            </div>
+
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contacto</h2>
-            <form class="contact-form" action="https://formsubmit.co/fauricioquiros518@gmail.com" method="POST">
-                <!-- Configuración de FormSubmit -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio web">
-                <input type="hidden" name="_next" value="https://fauricioquirosportafolio.netlify.app/gracias.html">
-                
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Enviar Mensaje</button>
-            </form>
+    <div class="divider"></div>
+
+
+    <!-- ── SKILLS ─────────────────────────────────── -->
+    <section id="tecnologias">
+      <div class="container">
+
+        <div style="margin-bottom: var(--space-12);" class="fade-in">
+          <span class="section-label">Tecnologías</span>
+          <h2 class="section-title">Mis herramientas<br>de trabajo.</h2>
+          <p class="section-subtitle">
+            Desde backend con C# hasta aplicaciones móviles con Flutter,
+            trabajo con el stack completo de desarrollo.
+          </p>
         </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M9 9h6M9 12h6M9 15h4"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Backend Web</div>
+            <div class="skill-tags">
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">ASP.NET MVC</span>
+              <span class="skill-tag">ASP.NET Core</span>
+              <span class="skill-tag">Entity Framework</span>
+              <span class="skill-tag">EF6 / EF Core</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Móvil</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">Kotlin</span>
+              <span class="skill-tag">Jetpack Compose</span>
+              <span class="skill-tag">FlutterFlow</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Firestore</span>
+              <span class="skill-tag">Firebase Auth</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Frontend</div>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Razor Views</span>
+              <span class="skill-tag">Bootstrap</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Bases de Datos</div>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">T-SQL</span>
+              <span class="skill-tag">Migraciones EF</span>
+              <span class="skill-tag">Diseño relacional</span>
+              <span class="skill-tag">Firestore NoSQL</span>
+              <span class="skill-tag">Supabase / Postgres</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Herramientas & DevOps</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Git & GitHub</span>
+              <span class="skill-tag">Visual Studio</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Android Studio</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-card-icon ic-teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <div class="skill-card-title">Redes & Infraestructura</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Cisco Routing</span>
+              <span class="skill-tag">OSPF</span>
+              <span class="skill-tag">RIP</span>
+              <span class="skill-tag">Subnetting</span>
+              <span class="skill-tag">TCP/IP</span>
+              <span class="skill-tag">Packet Tracer</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Fauricio Quirós - Systems Engineer.</p>
-    </footer>
+    <div class="divider"></div>
 
-    <!-- Modal para proyectos -->
-    <div class="modal" id="project-modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
-            <div id="modal-body"></div>
+
+    <!-- ── PROYECTOS ──────────────────────────────── -->
+    <section id="proyectos">
+      <div class="container-wide">
+
+        <div style="margin-bottom: var(--space-12);" class="fade-in">
+          <span class="section-label">Proyectos</span>
+          <h2 class="section-title">Lo que he<br>construido.</h2>
+          <p class="section-subtitle">
+            Proyectos realizados por mi.
+            Cada uno resuelve un problema concreto.
+          </p>
         </div>
+
+        <div class="projects-grid">
+
+          <!-- Autex Manager -->
+          <article class="project-card featured has-banner fade-in">
+            <div class="project-media">
+              <button type="button" class="zoomable"
+                      data-full="Assets/full/autex-dashboard.jpg"
+                      data-caption="Dashboard principal de Autex Manager en el taller">
+                <img src="Assets/autex/autex-dashboard.jpg"
+                     alt="Autex Manager en una tablet sostenida por un mecánico dentro de un taller: dashboard con órdenes del día, vehículos en servicio, alertas de stock y accesos rápidos"
+                     width="1536" height="1024" loading="lazy">
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                  Haz clic para ver en grande
+                </span>
+              </button>
+            </div>
+            <div class="project-card-header">
+              <div class="project-icon-wrap ic-blue">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2"/>
+                  <line x1="12" y1="18" x2="12.01" y2="18"/>
+                </svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/FauriTG" target="_blank" rel="noopener noreferrer"
+                   class="project-link-btn" aria-label="Ver Autex Manager en GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">App Móvil — SaaS Multi-Negocio</div>
+              <div class="project-name">Autex Manager</div>
+              <div class="project-desc">
+                Plataforma SaaS multi-negocio para la gestión integral de talleres automotrices,
+                autolavados, lubricentros y talleres de motos. Con una sola base de código, el
+                dashboard y el flujo de trabajo se adaptan automáticamente al tipo de negocio,
+                ofreciendo a cada rubro una experiencia optimizada sin sacrificar una identidad
+                visual consistente. Incluye órdenes de servicio, clientes y vehículos, inventario,
+                facturación, reportes y gestión de equipo, con control de acceso por roles y
+                multi-tenant sobre Firebase.
+              </div>
+
+              <ul class="project-gallery" role="list">
+                <li>
+                  <button type="button" class="zoomable"
+                          data-full="Assets/full/autex-kanban.jpg"
+                          data-caption="Tablero Kanban de órdenes">
+                    <img src="Assets/autex/autex-kanban.jpg"
+                         alt="Tablero Kanban de órdenes de servicio con columnas Recibido, Pendiente, En Proceso, Finalizado y Entregado"
+                         width="900" height="600" loading="lazy">
+                    <span class="zoom-hint" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                      </svg>
+                      Haz clic para ver en grande
+                    </span>
+                  </button>
+                  <span>Tablero Kanban de órdenes</span>
+                </li>
+                <li>
+                  <button type="button" class="zoomable"
+                          data-full="Assets/full/autex-orden.jpg"
+                          data-caption="Creación de orden de servicio">
+                    <img src="Assets/autex/autex-orden.jpg"
+                         alt="Formulario de creación de orden de servicio con selección de cliente, vehículo y detalle del problema"
+                         width="900" height="600" loading="lazy">
+                    <span class="zoom-hint" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                      </svg>
+                      Haz clic para ver en grande
+                    </span>
+                  </button>
+                  <span>Creación de orden de servicio</span>
+                </li>
+                <li>
+                  <button type="button" class="zoomable"
+                          data-full="Assets/full/autex-repuestos.jpg"
+                          data-caption="Repuestos, fotos y costeo">
+                    <img src="Assets/autex/autex-repuestos.jpg"
+                         alt="Detalle de orden con repuestos tomados del inventario, fotos del vehículo y costo total estimado"
+                         width="900" height="600" loading="lazy">
+                    <span class="zoom-hint" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                      </svg>
+                      Haz clic para ver en grande
+                    </span>
+                  </button>
+                  <span>Repuestos, fotos y costeo</span>
+                </li>
+              </ul>
+
+              <div class="project-stack">
+                <span class="project-tag">Flutter</span>
+                <span class="project-tag">Dart</span>
+                <span class="project-tag">Material 3</span>
+                <span class="project-tag">Provider</span>
+                <span class="project-tag">Firestore</span>
+                <span class="project-tag">Cloud Functions</span>
+                <span class="project-tag">RBAC multi-tenant</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- César Brenes Car Service -->
+          <article class="project-card fade-in">
+            <div class="project-media">
+              <button type="button" class="zoomable"
+                      data-full="Assets/full/cesar-taller.jpg"
+                      data-caption="Landing page de César Brenes Car Service">
+                <img src="Assets/cesar-taller.jpg"
+                     alt="Landing page de César Brenes Car Service en un portátil sobre un banco de taller: portada con el nombre del taller y botones para agendar cita por WhatsApp"
+                     width="900" height="600" loading="lazy">
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                  Haz clic para ver en grande
+                </span>
+              </button>
+            </div>
+            <div class="project-card-header">
+              <div class="project-icon-wrap ic-green">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M3 9h18"/>
+                  <path d="M9 21V9"/>
+                </svg>
+              </div>
+              <div class="project-links">
+                <a href="https://cesarbrenescarservice.com/" target="_blank" rel="noopener noreferrer"
+                   class="project-link-btn" aria-label="Ver sitio de César Brenes Car Service">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">Landing Page — Negocio Real</div>
+              <div class="project-name">César Brenes Car Service</div>
+              <div class="project-desc">
+                Landing page profesional para negocio de taller mecánico. Diseño moderno,
+                responsivo y optimizado para conversión. Incluye información de servicios,
+                contacto y ubicación del negocio.
+              </div>
+              <div class="project-stack">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Responsive</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Compras en Línea -->
+          <article class="project-card fade-in">
+            <div class="project-media">
+              <button type="button" class="zoomable"
+                      data-full="Assets/full/tienda-avenida.jpg"
+                      data-caption="Tienda en línea La Nueva Avenida">
+                <img src="Assets/tienda-avenida.jpg"
+                     alt="Tienda en línea La Nueva Avenida en un portátil frente al local: portada con buscador, categorías y la promoción de nuevas colecciones"
+                     width="900" height="600" loading="lazy">
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                  Haz clic para ver en grande
+                </span>
+              </button>
+            </div>
+            <div class="project-card-header">
+              <div class="project-icon-wrap ic-purple">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"/>
+                  <circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/FauriTG" target="_blank" rel="noopener noreferrer"
+                   class="project-link-btn" aria-label="Ver Compras en Línea en GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">E-Commerce — En Desarrollo</div>
+              <div class="project-name">Compras en Línea</div>
+              <div class="project-desc">
+                Página web para compras en línea con interfaz clara, moderna y responsiva.
+                Incluye catálogo de productos, diseño adaptable para móviles, estilos
+                personalizados y componentes interactivos. Preparado para integración con backend.
+              </div>
+              <div class="project-stack">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Responsive</span>
+                <span class="project-tag">Catálogo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pillo Performance House -->
+          <article class="project-card fade-in">
+            <div class="project-media">
+              <button type="button" class="zoomable"
+                      data-full="Assets/full/pillo-performance.jpg"
+                      data-caption="Sitio web de Pillo Performance House">
+                <img src="Assets/pillo-performance.jpg"
+                     alt="Sitio web de Pillo Performance House en un portátil dentro de un taller de motos: portada oscura con el logo de la marca y el lema tuning, performance y custom"
+                     width="900" height="600" loading="lazy">
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                  Haz clic para ver en grande
+                </span>
+              </button>
+            </div>
+            <div class="project-card-header">
+              <div class="project-icon-wrap ic-orange">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="5.5" cy="17.5" r="3.5"/>
+                  <circle cx="18.5" cy="17.5" r="3.5"/>
+                  <path d="M15 6h5l1 4"/>
+                  <path d="M5.5 17.5 9 9h4l4.5 8.5"/>
+                  <path d="M9 9 7 6H4"/>
+                </svg>
+              </div>
+              <div class="project-links">
+                <a href="https://pilloperformancehouse.netlify.app/" target="_blank" rel="noopener noreferrer"
+                   class="project-link-btn" aria-label="Ver sitio de Pillo Performance House">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">Sitio Web — Negocio Real</div>
+              <div class="project-name">Pillo Performance House</div>
+              <div class="project-desc">
+                Sitio web para un negocio de motocicletas especializado en tuning, performance
+                y personalización. Identidad visual oscura construida alrededor de la marca,
+                con secciones de servicios, marcas, galería y reels, y llamado directo a
+                agendar cita.
+              </div>
+              <div class="project-stack">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Responsive</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PetFinder CR -->
+          <article class="project-card fade-in">
+            <div class="project-media">
+              <button type="button" class="zoomable"
+                      data-full="Assets/full/petfinder.jpg"
+                      data-caption="PetFinder CR — pantalla principal">
+                <img src="Assets/petfinder.jpg" class="media-center"
+                     alt="PetFinder CR en un teléfono sobre un escritorio: pantalla de inicio con el botón para reportar una mascota, casos recientes cercanos marcados como perdido o encontrado, y un mapa de Costa Rica"
+                     width="900" height="600" loading="lazy">
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                  Haz clic para ver en grande
+                </span>
+              </button>
+            </div>
+            <div class="project-card-header">
+              <div class="project-icon-wrap ic-teal">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="5" cy="10" r="2"/>
+                  <circle cx="9.5" cy="5.5" r="2"/>
+                  <circle cx="14.5" cy="5.5" r="2"/>
+                  <circle cx="19" cy="10" r="2"/>
+                  <path d="M12 12.5c-2.4 0-4.3 1.9-4.3 3.9 0 1.6 1.2 2.6 2.6 2.6.7 0 1.1-.3 1.7-.3s1 .3 1.7.3c1.4 0 2.6-1 2.6-2.6 0-2-1.9-3.9-4.3-3.9z"/>
+                </svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/FauriTG" target="_blank" rel="noopener noreferrer"
+                   class="project-link-btn" aria-label="Ver PetFinder CR en GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-type">App Android — Proyecto Universitario</div>
+              <div class="project-name">PetFinder CR</div>
+              <div class="project-desc">
+                App Android nativa para reportar y encontrar mascotas perdidas en Costa Rica.
+                Conecta a quien perdió a su mascota con quien la vio en la calle mediante
+                reportes georreferenciados sobre mapa, un motor de coincidencias entre casos
+                perdidos y encontrados, y chat directo entre usuarios. Reemplaza los grupos
+                de Facebook dispersos por un solo lugar donde actuar rápido.
+              </div>
+              <div class="project-stack">
+                <span class="project-tag">Kotlin</span>
+                <span class="project-tag">Jetpack Compose</span>
+                <span class="project-tag">MVVM + StateFlow</span>
+                <span class="project-tag">Hilt</span>
+                <span class="project-tag">Supabase</span>
+                <span class="project-tag">Google Maps</span>
+                <span class="project-tag">Firebase</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── EXPERIENCIA ────────────────────────────── -->
+    <section id="experiencia">
+      <div class="container-wide">
+        <div class="exp-layout">
+
+          <!-- Título pegajoso -->
+          <div class="exp-sticky fade-in">
+            <span class="section-label">Trayectoria</span>
+            <h2 class="section-title">Educación &amp;<br>experiencia.</h2>
+            <p class="section-subtitle">Formación técnica en ingeniería, aplicada en proyectos reales.</p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="timeline fade-in">
+
+            <div class="timeline-item">
+              <div class="timeline-track">
+                <div class="timeline-dot"></div>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-period">2023 — Presente</div>
+                <div class="timeline-role">Ingeniería en Sistemas Computacionales</div>
+                <div class="timeline-place">Universidad Latina de Costa Rica</div>
+                <div class="timeline-detail">
+                  Formación en desarrollo web, bases de datos, redes y programación orientada a objetos.
+                  Proyectos prácticos con ASP.NET, Entity Framework, Flutter y Firebase.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+
+    <!-- ── CONTACTO ───────────────────────────────── -->
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-inner">
+
+          <!-- CTA -->
+          <div class="contact-cta-block fade-in">
+            <span class="section-label">Contacto</span>
+            <h2 class="contact-cta-title">Trabajemos<br>juntos.</h2>
+            <p class="contact-cta-subtitle">
+              Estoy en busca de empleo, con disponibilidad inmediata.
+              También tomo proyectos freelance y colaboraciones.
+              Si tienes algo en mente, escríbeme.
+            </p>
+            <a href="mailto:fauricioquiros518@gmail.com" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Enviar un correo
+            </a>
+          </div>
+
+          <!-- Links de contacto -->
+          <div class="contact-links fade-in">
+
+            <a href="mailto:fauricioquiros518@gmail.com" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-link-label">Email</div>
+                <div class="contact-link-value">fauricioquiros518@gmail.com</div>
+              </div>
+            </a>
+
+            <a href="tel:+50685270973" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.47 2 2 0 0 1 3.62 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.29 6.29l1.16-1.16a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-link-label">Teléfono</div>
+                <div class="contact-link-value">+506 8527-0973</div>
+              </div>
+            </a>
+
+            <a href="https://github.com/FauriTG" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-link-label">GitHub</div>
+                <div class="contact-link-value">github.com/FauriTG</div>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/fauricioquiros" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-link-label">LinkedIn</div>
+                <div class="contact-link-value">Miguel Fauricio Quiros Salas</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer>
+    <p class="footer-copy">© 2026 Miguel Fauricio Quiros Salas</p>
+    <nav class="footer-links" aria-label="Links rápidos">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════
+       VISOR DE IMÁGENES
+  ══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+    <div class="lightbox-bar">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+      <div class="lightbox-tools">
+        <button type="button" class="lightbox-btn" data-lb="out" aria-label="Alejar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </button>
+        <span class="lightbox-level" data-lb="level">100%</span>
+        <button type="button" class="lightbox-btn" data-lb="in" aria-label="Acercar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </button>
+        <button type="button" class="lightbox-btn lightbox-close" data-lb="close" aria-label="Cerrar visor">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-<!-- 🔥 ALERTA DE "AÚN NO DISPONIBLE" -->
-    <div id="live-alert" class="alert hidden">
-        <p id="live-alert-text"></p>
+    <div class="lightbox-stage" data-lb="stage">
+      <img data-lb="img" alt="">
     </div>
-    
-<script src="js/main.js" defer></script>
+
+    <p class="lightbox-help">
+      Rueda del ratón o pellizca para hacer zoom · arrastra para mover · doble clic para alternar · Esc para salir
+    </p>
+  </div>
+
+
+
 </body>
 </html>
